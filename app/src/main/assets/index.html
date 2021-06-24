@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 100vw;
+            overflow: hidden;
+        }
+        .top{
+            background-color: #4091FF;
+        }
+        .search{
+            position: relative;
+        }
+        .search input{
+            width: 90vw;
+            height: 30px;
+            border-radius: 20px;
+            margin-left: 5vw;
+            margin-top: 4vw;
+            outline: none;
+            border: none;
+            text-indent: 2em;
+            
+        }
+        .search img{
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            right: 30px;
+            top:20px;
+        }
+        .bottom{
+            text-align: center;
+            margin-top: 3vh;
+        }
+        .bottom>div{
+            width: 40vw;
+            display: inline-block;
+            text-align: center;
+            font-size: 10px;
+            color: #f4f4f4
+        }
+        .bottom div img{
+            width: 50px;
+            height: 50px;
+        }
+        .list{
+            margin-top: 20px;
+            text-align: center;
+
+        }
+        .list div{
+            color: #797979;
+            font-size: 10px;
+        }
+        .list div div:hover{
+            background-color: bisque;
+        }
+        .list div div{
+            box-sizing: border-box;
+            display: inline-block;
+            /* border: 1px solid red; */
+            width:20vw;
+            height: 20vw;
+            /* border: 1px solid #4091FF; */
+            border-radius: 50%;
+        }
+        .list div div img{
+            height: 20px;
+            width: 20px;
+            margin-top:5vw
+        }
+        .banner{
+            font:0;
+            width: 100vw;
+            height: 15vh;
+            overflow: hidden;
+            /* border-radius: 10px; */
+        }
+        .banner div{
+            width: 10000vw;
+            /* transition: all 1s ease-in-out; */
+        }
+        .banner img{
+            margin-top: -10vh;
+            height: 25vh;
+            display: inline-block;
+            vertical-align: top;
+            width: 100vw;
+        }
+        .news .gategroy{
+            white-space: nowrap;
+            overflow:scroll;
+
+        }
+        .news .gategroy li{
+            color: #797979;
+            display: inline-block;
+            margin-left: 10px;
+            white-space: nowrap;
+        }
+        .news .list{
+
+        }
+        .news .list li img{
+            width: 30%;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .news .list li .content{
+            width: 60%;
+            display: inline-block;
+            vertical-align: top;
+            height: 60px;
+            overflow: hidden;
+        }
+        .news .list li .listDes{
+            margin-bottom: 10px;
+        }
+        .news .list li .listDes .right{
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="all">
+        <div class="banner">
+            <div id="imgBox">
+                <img v-for="item in banner" :src="item" alt="">
+            </div>
+        </div>
+        <div class="top">
+            <div class="search">
+                <input type="text">
+                <img src="./img/search.png">
+            </div>
+            <div class="bottom">
+                <div v-for="item in hot">
+                    <img :src="item.icon" alt="">
+                    <p>{{item.title}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="list">
+            <div>
+                <div v-for="item in moreActions[0]">
+                    <img :src="item.icon" alt="">
+                    <p>{{item.title}}</p>
+                </div>
+            </div>
+            <div>
+                <div v-for="item in moreActions[1]">
+                    <img :src="item.icon" alt="">
+                    <p>{{item.title}}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="news">
+            
+            <ul class="gategroy">
+                <li v-for="item in newsCategory.data">{{item.name}}</li>
+            </ul>
+            <ul class="list">
+                <li v-for="item in newsList.rows">
+                    <h5>{{item.title}}</h5>
+                    <div>
+                        <img :src="'http://124.93.196.45:10001'+ item.cover" alt="">
+                        <p class="content">{{item.content}}</p>
+                    </div>
+                    <div class="listDes">
+                        <span class="left">阅读数：{{item.readNum}}</span>
+                        <span class="right">日期：{{item.publishDate}}</span>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+        
+
+        
+        
+
+
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: "#all",
+            data() {
+                return{
+                    bannerLeft:0,
+                    bannerTime:1,
+                    hot:[
+                        {
+                            icon: "./img/shenghuofuwu.png",
+                            title: "生活服务"
+                        },
+                        {
+                            icon: "./img/subway.png",
+                            title: "城市地铁"
+                        }
+                    ],
+                    moreActions:[
+                        [
+                            {
+                                icon: "./img/tianqi.png",
+                                title: "实时天气"
+                            },
+                            {
+                                icon: "./img/jiaofei.png",
+                                title: "生活缴费"
+                            },
+                            {
+                                icon: "./img/jiudian.png",
+                                title: "酒店"
+                            },
+                            {
+                                icon: "./img/xingwen.png",
+                                title: "新闻"
+                            },
+                            {
+                                icon: "./img/dangbiao.png",
+                                title: "建档"
+                            }
+                        ],
+                        [
+                            {
+                                icon: "./img/zhihuihuabao.png",
+                                title: "智慧环保"
+                            },
+                            {
+                                icon: "./img/yanglao.png",
+                                title: "智慧养老"
+                            },
+                            {
+                                icon: "./img/che.png",
+                                title: "堵车移车"
+                            },
+                            {
+                                icon: "./img/ditie.png",
+                                title: "城市地铁"
+                            },
+                            {
+                                icon: "./img/gengduo.png",
+                                title: "更多服务"
+                            }
+                        ]
+                    ],
+                    banner: ['./img/banner5.jpg','./img/banner1.jpg','./img/banner2.jpg','./img/banner3.jpg','./img/banner4.jpg','./img/banner5.jpg','./img/banner1.jpg'],
+                    newsCategory:undefined,
+                    newsList: undefined,
+                }
+            },
+            mounted() {
+                var i = 1;
+                var timer = setInterval(function() {
+                    imgBox.style.marginLeft = -(i * 100) + "vw"
+                    imgBox.style.transition = "all .3s ease-in-out"
+                    imgBox.addEventListener("transitionend",function() {
+                        if(i > 5){
+                            imgBox.style.marginLeft = 0 + "px";
+                            imgBox.style.transition = null;
+                            i = 1;
+                        }
+                    })
+                    
+
+                    i ++;
+                },2000)
+
+                this.newsCategory = JSON.parse(window.indexPage.getNewsCategory());
+                this.newsList = JSON.parse(window.indexPage.getNewsList());
+            },
+            methods:{
+
+            }
+        })
+
+    </script>
+</body>
+</html>
