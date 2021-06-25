@@ -141,11 +141,11 @@
         </div>
         <div class="top">
             <div class="search">
-                <input type="text">
-                <img src="./img/search.png">
+                <input type="text" placeholder="请输入搜索内容" v-model="searchValue">
+                <img src="./img/search.png" @click="clickSearch(searchValue)">
             </div>
             <div class="bottom">
-                <div v-for="item in hot">
+                <div v-for="(item,index) in hot" @click="clickHotItem(index)">
                     <img :src="item.icon" alt="">
                     <p>{{item.title}}</p>
                 </div>
@@ -153,19 +153,18 @@
         </div>
         <div class="list">
             <div>
-                <div v-for="item in moreActions[0]">
+                <div v-for="(item,index) in moreActions[0]" v-on:click="clickListItem(index)">
                     <img :src="item.icon" alt="">
                     <p>{{item.title}}</p>
                 </div>
             </div>
             <div>
-                <div v-for="item in moreActions[1]">
+                <div v-for="(item,index) in moreActions[1]" v-on:click="clickListItem(index + 4)">
                     <img :src="item.icon" alt="">
                     <p>{{item.title}}</p>
                 </div>
             </div>
         </div>
-        
         <div class="news">
             
             <ul class="gategroy">
@@ -261,6 +260,7 @@
                     banner: ['./img/banner5.jpg','./img/banner1.jpg','./img/banner2.jpg','./img/banner3.jpg','./img/banner4.jpg','./img/banner5.jpg','./img/banner1.jpg'],
                     newsCategory:undefined,
                     newsList: undefined,
+                    searchValue: undefined
                 }
             },
             mounted() {
@@ -284,7 +284,17 @@
                 this.newsList = JSON.parse(window.indexPage.getNewsList());
             },
             methods:{
-
+                clickListItem(index) {
+                    window.indexPage.setListIndexEvent( index + "" );
+                },
+                clickHotItem(index) {   
+                    window.indexPage.setHotIndexEvent( index + "" );
+                },
+                clickSearch(searchValue){
+                    if(searchValue){
+                        window.indexPage.setSearchBtnEvent( searchValue + "" );
+                    }
+                }
             }
         })
 

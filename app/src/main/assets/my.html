@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .header{
+            
+            text-align: center;
+            background-color: #4091FF;
+            padding: 20px;
+        }
+        .header div{
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .header img{
+            height: 80px;
+        }
+        .listContent{
+            margin-top: 20px;
+        }
+        .listContent ul li{
+            height: 40px;
+            border:1px solid #797979;
+            margin: 5px;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+        .listContent ul li span{
+            float: left;
+            margin-top: 1vh;
+            margin-left: 10px;
+        }
+        .listContent ul li img{
+            width: 10px;
+            float: right;
+            margin-right: 20px;
+            margin-top: 1vh;
+        }
+        .returnBtn{
+            text-align: center;
+            margin-top: 30px;
+        }
+        .returnBtn button{
+            width: 80px;
+            height: 40px;
+            border:none;
+            outline: none;
+            background-color: #4091FF;
+            border-radius: 10px;
+            color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="all">
+
+        <div class="header">
+            <div>
+                <img :src="myDes.icon" alt="">
+            </div>
+            <p>
+                <span>ID:{{myDes.id}}</span>
+            </p>
+        </div>
+        <div class="listContent">
+            <ul>
+                <li v-for="item in listTitle">
+                    <span>{{item}}</span>
+                    <img src="./img/more.png" alt="">
+                </li>
+            </ul>
+        </div>
+        <div class="returnBtn">
+            <button>退出</button>
+        </div>
+
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: "#all",
+            data() {
+                return{
+                    listTitle:["个人信息","订单列表","修改密码","意见反馈"],
+                    myDes:{
+                        icon: "./img/banner2.jpg",
+                        id: "1234"
+                    }
+                }
+            },
+            mounted: {
+
+            },
+            methods:{
+
+            }
+        })
+
+    </script>
+</body>
+</html>
