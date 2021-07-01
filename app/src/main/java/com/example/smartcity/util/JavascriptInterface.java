@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.example.smartcity.Activity.FeedBackActivity;
+import com.example.smartcity.Activity.PutMyDesActivity;
+import com.example.smartcity.Activity.PutPasswordActivity;
 import com.example.smartcity.MainActivity;
 
 public class JavascriptInterface {
@@ -67,5 +70,19 @@ public class JavascriptInterface {
             intent = new Intent(context,MainActivity.class);
             context.startActivity(intent);
         }
+    }
+    @android.webkit.JavascriptInterface
+    public void setListMenuIndexEvent(String index) {
+        Intent intent;
+        intent = new Intent(context, PutMyDesActivity.class);
+        switch (index){
+            case "0": intent = new Intent(context, PutMyDesActivity.class); break;
+            case "1": intent = new Intent(context, PutMyDesActivity.class); break;
+            case "2": intent = new Intent(context, PutPasswordActivity.class); break;
+            case "3": intent = new Intent(context, FeedBackActivity.class); break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + index);
+        }
+        context.startActivity(intent);
     }
 }

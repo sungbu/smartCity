@@ -17,6 +17,16 @@
         <activity android:name=".Activity.IndexActivity">
 
         </activity>
+        <activity android:name=".Activity.PutMyDesActivity">
+
+        </activity>
+        <activity android:name=".Activity.PutPasswordActivity">
+
+        </activity>
+        <activity android:name=".Activity.FeedBackActivity">
+
+        </activity>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

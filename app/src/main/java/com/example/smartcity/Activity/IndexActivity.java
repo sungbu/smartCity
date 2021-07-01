@@ -24,6 +24,6 @@ public class IndexActivity extends AppCompatActivity {
 
         webView.loadUrl("file:///android_asset/index.html");
 
-        webView.addJavascriptInterface(new JavascriptInterface(this),"indexPage");
+        webView.addJavascriptInterface(new JavascriptInterface(getApplication()),"indexPage");
     }
 }

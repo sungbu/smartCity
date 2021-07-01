@@ -60,6 +60,30 @@
             border-radius: 10px;
             color: #f4f4f4;
         }
+        .inputContent {
+            padding: 10px;
+            color: #797979;
+            font-size: 20px;
+        }
+        .inputContent div{
+            margin: 5px;
+            display: flex;
+            justify-content: space-around;
+            
+            
+        }
+        .inputContent div label{
+            width: 90px;
+        }
+        .inputContent div input{
+            text-indent: .5em;
+            outline: none;
+            width: 200px;
+            font-size: 20px;
+            color: #797979;
+            border:none;
+            border-bottom: 1px solid #797979;
+        }
     </style>
 </head>
 <body>
@@ -74,16 +98,13 @@
                 <span>ID:{{myDes.id}}</span>
             </p>
         </div>
-        <div class="listContent">
-            <ul>
-                <li v-for="(item,index) in listTitle" @click="clickListMenu(index)">
-                    <span>{{item}}</span>
-                    <img src="./img/more.png" alt="">
-                </li>
-            </ul>
+        <div class="inputContent">
+            <div><label for="userName">昵称：</label><input  type="text" name="userName" id="userName"></div>
+            <div><label for="userSex">性别:</label><input type="text" name="userSex" id="userSex"></div>
+            <div><label for="number">联系电话</label><input type="text" name="userPhone" id="userPhone"></div>
         </div>
         <div class="returnBtn">
-            <button>退出</button>
+            <button>提交</button>
         </div>
 
     </div>
@@ -94,7 +115,6 @@
             el: "#all",
             data() {
                 return{
-                    listTitle:["个人信息","订单列表","修改密码","意见反馈"],
                     myDes:{
                         icon: "./img/banner2.jpg",
                         id: "1234"
@@ -105,9 +125,7 @@
 
             },
             methods:{
-                clickListMenu(index){
-                    window.myPage.setListMenuIndexEvent(index + "");
-                }
+
             }
         })
 

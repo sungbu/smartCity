@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #all{
+            text-align: center;
+            position: relative;
+        }
+        textarea{
+            width: 90vw;
+            height: 30vh;
+            color: #797979;
+            margin-top: 20px;
+            padding:10px;
+            outline: none;
+            border-radius: 10px;
+        }
+        button{
+            padding: 5px 10px;
+            position: absolute;
+            right:30px;
+            bottom: 30px;
+            border: none;
+            outline: none;
+            color: #fff;
+            border-radius: 5px;;
+            background-color: #4091FF;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="all">
+        <textarea>反馈意见</textarea>
+        <button>提交</button>
+
+    </div>
+
+    <script src="./js/vue.js"></script>
+    <script>
+        var vue = new Vue({
+            el: "#all",
+            data() {
+                return{
+
+                }
+            },
+            mounted: {
+
+            },
+            methods:{
+
+            }
+        })
+
+    </script>
+</body>
+</html>
